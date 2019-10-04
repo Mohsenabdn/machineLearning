@@ -15,11 +15,11 @@ y = pd.read_csv('train_labels.csv', index_col='building_id')
 
 trainX, testX, trainy, testy = train_test_split(X, y, stratify=y)
 
-numNeighbors = list(range(5, 51, 5))
+numNeighbors = list(range(10, 25))
 accuracies = []
 
-for numNei in numNeighbors:
-    clf = KNeighborsClassifier(n_neighbors=numNei)
+for k in numNeighbors:
+    clf = KNeighborsClassifier(n_neighbors=k, weights='distance')
     clf.fit(trainX, trainy.values.ravel())
     yPred = clf.predict(testX)
     accuracies.append(f1_score(testy, yPred, average='micro'))
