@@ -13,9 +13,10 @@ start = time.time()
 X = pd.read_csv('noScalingPPTrainValues.csv', index_col='building_id')
 y = pd.read_csv('train_labels.csv', index_col='building_id')
 
-trainX, testX, trainy, testy = train_test_split(X, y, stratify=y)
+trainX, testX, trainy, testy = train_test_split(X, y, stratify=y,
+                                                random_state=12)
 
-numNeighbors = list(range(10, 25))
+numNeighbors = list(range(10, 26))
 accuracies = []
 
 for k in numNeighbors:
@@ -24,9 +25,11 @@ for k in numNeighbors:
     yPred = clf.predict(testX)
     accuracies.append(f1_score(testy, yPred, average='micro'))
 
-plt.plot(numNeighbors, accuracies)
+plt.plot(numNeighbors, accuracies, linestyle='-', marker='.', markersize=8)
 plt.gca().set(xlabel='Number of neighbors', ylabel='Accuracy',
-              title='Accuracy for different number of neighbors')
+              title='Accuracy of each Model', xticks=numNeighbors,
+              xlim=(min(numNeighbors), max(numNeighbors)))
+plt.grid(linestyle='--')
 plt.show()
 
 print('time : ' + str((time.time() - start)/60))
