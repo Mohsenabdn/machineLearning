@@ -1,5 +1,6 @@
-# Applying Decision Tree model with different maximum depth and plotting the
-# accuracy of each model.
+# Applying Decision Tree model using GridSearchCV. Also the part ********** of
+# the code is computing accruacy of models with different max_depth and fixed
+# min_samples_leaf.
 
 import time
 import pandas as pd
