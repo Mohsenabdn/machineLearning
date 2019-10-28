@@ -19,8 +19,7 @@ trainX, testX, trainy, testy = train_test_split(X, y, stratify=y,
 
 # Make this line a comment when running part **********.
 
-params = {'max_depth': [i for i in range(25, 35)], 'min_samples_leaf':
-          [i for i in range(30, 40)]}
+params = {'max_depth': range(25, 35), 'min_samples_leaf': range(30, 40)}
 
 
 # **********
