@@ -6,8 +6,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, confusion_matrix
+from funcs import plotFunc
 import matplotlib.pyplot as plt
-from matplotlib.ticker import StrMethodFormatter
 import time
 
 start = time.time()
@@ -43,19 +43,16 @@ for k in numNeighbors:
 print('time : ' + str((time.time() - start)/60))
 
 plt.subplot(2, 1, 1)
-plt.plot(numNeighbors, testAccuracies, color='b', linestyle='-', marker='.',
-         markersize=8)
-plt.gca().set(xlabel='Number of neighbors', ylabel='Accuracy',
-              title="Test accuracy of each model (weights='distance', p=1)",
-              xticks=numNeighbors, xlim=(min(numNeighbors), max(numNeighbors)))
-plt.grid(linestyle='--')
+plotFunc(numNeighbors, testAccuracies, xlabel='Number of neighbors',
+         ylabel='Accuracy', title="Test accuracy of each model\
+(weights='distance', p=1)", xticks=numNeighbors, xlim=(min(numNeighbors),
+                                                       max(numNeighbors)))
+
 plt.subplot(2, 1, 2)
-plt.plot(numNeighbors, trainAccuracies, color='r', linestyle='-', marker='.',
-         markersize=8)
-plt.gca().set(xlabel='Number of neighbors', ylabel='Accuracy',
-              title="Train accuracy of each model (weights='distance', p=1)",
-              xticks=numNeighbors, xlim=(min(numNeighbors), max(numNeighbors)))
-plt.gca().yaxis.set_major_formatter(StrMethodFormatter('{x:,.6f}'))
-plt.grid(linestyle='--')
+plotFunc(numNeighbors, trainAccuracies, c='r', yformat='{x:,.6f}',
+         xlabel='Number of neighbors', ylabel='Accuracy', title="Train\
+accuracy of each model (weights='distance', p=1)", xticks=numNeighbors,
+         xlim=(min(numNeighbors), max(numNeighbors)))
+
 plt.tight_layout()
 plt.show()
