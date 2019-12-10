@@ -25,7 +25,11 @@ def plotFunc(x, y, mark=('.', 8), c='b', grid=True, yformat='{x:,.4f}',
         ----------------
         **kwargs : including strings representing title, xlabel, and ylabel.
             Also, it includes xlim and ylim as tuples and xticks and yticks as
-            list-like objects."""
+            list-like objects.
+
+        Return
+        ------
+        A 2D graph."""
 
     plt.plot(x, y, color=c, linestyle='-', marker=mark[0], markersize=mark[1])
     plt.gca().set(**kwargs)
