@@ -5,7 +5,7 @@ creating random data sets.
 import numpy as np
 
 
-def Donut(n, r, margin):
+def donut(n, r, margin):
     """
     This function creates two group of random points. The first group form a
     donut and the other group form the hole in the center of the donut.
@@ -28,7 +28,7 @@ def Donut(n, r, margin):
     return x, y
 
 
-def Sigmoid(z):
+def sigmoid(z):
     """
     This function creates a bell-shaped curve ranged between 0 and 1. It is
     used in binary logistic regression model to map the regression line, plane
@@ -40,7 +40,7 @@ def Sigmoid(z):
     return 1 / (1+np.exp(-z))
 
 
-def SoftMax(z):
+def softMax(z):
     """
     This function maps the regression line, plane, or hyperplane obtained by
     logistic regression model, into (0,1). It is used when the target is not
